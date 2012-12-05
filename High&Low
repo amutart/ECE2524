@@ -1,0 +1,66 @@
+#include <iostream>
+#include <cTime>
+#include <iomanip>
+#include "HighLow.h"
+using namespace std;
+
+int main(void)
+{
+  // Variable
+	int nGold=INITGOLD;
+	int nBet=0;
+	int nSelect=0;
+	int nCardDeck[52]={0,};
+	int CardStack[5]={0,};
+	int nCloseCard=0;
+	int nIndex=0;
+	int *pIndex=NULL;
+
+	pIndex = &nIndex;
+
+	srand((unsigned int)time(NULL));
+
+	Init(nCardDeck, CardStack, pIndex);
+
+	while(true)
+	{
+		cout << "====================================" << endl;
+		DisplayHiddenCard(pIndex);
+		DisplayCardStack(CardStack);
+		cout << "====================================" << endl;
+
+		nCloseCard = PopCard(nCardDeck, pIndex);
+
+		if(!nCloseCard)
+		{
+			cout << "Ready to the new deck" << endl << endl;
+			Init(nCardDeck, CardStack, pIndex);
+			continue;
+		}
+
+		nBet = Betting(nGold);
+		nSelect = Answer();
+
+		if(Judge(nCloseCard, nSelect, nBet, &nGold) != 0)
+		{
+			cout << "You Win!" << endl << endl;
+		}
+		else
+		{
+			cout << "Sorry, you lose." << endl << endl;
+		}
+		cout << "Card of CPU is" ;
+		TransNumToCard(nCloseCard);
+		cout << "." << endl << endl;
+
+		InsertCard(CardStack, nCloseCard);
+
+		if(nGold <= 0)
+		{
+			cout << "You Are BACKRUPT!!" << endl;
+			break;
+		}
+	}
+
+	return 0;
+}
