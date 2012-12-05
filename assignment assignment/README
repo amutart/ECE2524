@@ -1,0 +1,15 @@
+<p>Why is this assignment relevent to an Intro to Unix course?</p>
+
+<ul>
+<li>This assignment is a assignment that can introduce Python to students with file and argument manipulation. Also it can teach them how to handle errors.</li>
+</ul>
+
+<p>How should points be distributed for this assignment, i.e. what percentage should go to syntax, style, functionality, content, etc. If the solution fails to work at all (fails to compile, or fails to run) how should it be evaluated?</p>
+
+<p>Functions: 60%
+- 15% for each functions (select, insert, update, delete)
+Getting right output: 20%
+- 5% for each functions (select, insert, update, delete)
+Error handling: 15%
+- How they handle with duplication.
+Understandable comment: 5%</p>
